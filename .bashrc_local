@@ -66,3 +66,16 @@ if [[ -z "$DISPLAY" ]]; then
     # VNC session
     export DISPLAY=:1
 fi
+
+alias m="mflowgen"
+alias mnew="mflowgen run --design"
+alias meco1="mflowgen run --graph-kwargs {\"'eco':'self'\"} --design"
+alias meco2="mflowgen run --graph-kwargs {\"'eco':'parent'\"} --design"
+alias mup="mflowgen run --update"
+alias minit="mflowgen stash init --path"
+alias mln="mflowgen stash link --path"
+alias mls="mflowgen stash list"
+alias mpush="mflowgen stash push"
+alias mpull="mflowgen stash pull --hash"
+alias mdrop="mflowgen stash drop --hash"
+alias mparam="mflowgen param update"
