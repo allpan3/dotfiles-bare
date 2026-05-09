@@ -18,14 +18,15 @@ fi
 alias typora="open -a typora"
 alias dsclean='find . -type f -name .DS_Store -delete'
 
-########## Miniconda ##########
+########## Environment ##########
+## Conda
+# The base env bin is added to PATH and will always be implicitly activated
+# To activate/deactivate other environment, run the following commands
 # Activate environment:   conda activate <env>
-# Deactivate environment: conda deactivate
-if [ -f "/opt/conda/etc/profile.d/conda.sh" ]; then
-    . "/opt/conda/etc/profile.d/conda.sh"
-else
-    export PATH="/opt/conda/condabin:$PATH"
-fi
+# Deactivate environment: cond deactivate
+CONDA_HOME=${HOME}/.conda
+# This is effectively `conda init`
+[[ -e "${CONDA_HOME}" ]] && . "${CONDA_HOME}/etc/profile.d/conda.sh"
 
 ########## Completion ##########
 # ble.sh ships its own completion scripts, no need to load again
