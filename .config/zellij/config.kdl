@@ -224,7 +224,7 @@ keybinds clear-defaults=true {
   }
   session {
     bind "q" { Detach; }
-    bind "d" { Quit; }    // basically "delete session"
+    bind "D" { Quit; }    // basically "delete session"
     bind "w" {
       LaunchOrFocusPlugin "session-manager" {
         floating true
@@ -260,6 +260,13 @@ keybinds clear-defaults=true {
         };
         SwitchToMode "normal"
     }
+    bind "l" {
+      LaunchOrFocusPlugin "layout-manager" {
+        floating true
+        move_to_focused_tab true
+      };
+      SwitchToMode "normal"
+    }
   }
 }
 
@@ -272,6 +279,7 @@ plugins {
     filepicker location="zellij:strider" {
         cwd "/"
     }
+    layout-manager location="zellij:layout-manager"
     plugin-manager location="zellij:plugin-manager"
     session-manager location="zellij:session-manager"
     status-bar location="zellij:status-bar"
@@ -286,6 +294,7 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
+    "zellij:link"
 }
 
 
@@ -300,6 +309,10 @@ load_plugins {
 // Default: default
 // 
 theme "dracula"
+// react to terminal light/dark theme changes without
+// changing the look of this custom dark zjstatus layout unexpectedly.
+theme_dark "dracula"
+// theme_light "dayfox"
 
 // Choose the base input mode of zellij.
 // Default: normal
@@ -319,7 +332,8 @@ theme "dracula"
 // Default: "default"
 // (Requires restart)
 // 
-default_layout "zjstatus"
+// default_layout "zjstatus"
+// default_layout "compact"
  
 // The folder in which Zellij will look for layouts
 // (Requires restart)
@@ -474,10 +488,36 @@ support_kitty_keyboard_protocol false
 //
 // stacked_resize false
 
-// Whether to enable mouse hover effects and pane grouping functionality
+// Whether to enable mouse hover effects, multiple-select pane grouping, and mouse resizing.
 // Default: true
 //
 // advanced_mouse_actions false
+
+// Whether to show pane-frame hover highlights and resize help text while keeping
+// advanced mouse actions enabled.
+// Default: true
+//
+// mouse_hover_effects false
+
+// Whether to output OSC8 hyperlink sequences for clickable links.
+// Default: true
+//
+// osc8_hyperlinks false
+
+// Show visual bell indicators when panes/tabs emit BEL.
+// Default: true
+//
+// visual_bell false
+
+// Whether to focus panes when hovering them with the mouse.
+// Default: false
+//
+// focus_follows_mouse true
+
+// Whether the click that focuses a pane should also be sent to the application.
+// Default: false
+//
+// mouse_click_through true
 
 // Whether to show release notes on first version run
 // Default: true
