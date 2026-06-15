@@ -5,7 +5,6 @@
 [include]
   path = ~/.gitconfig-local  # Absolute path
 [core]
-  excludesfile = $HOME/.gitignore_global
   pager = delta
 [pager]
   # Custom delta theme for actions
