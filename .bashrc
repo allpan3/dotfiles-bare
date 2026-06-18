@@ -133,6 +133,11 @@ fi
 [[ ":$PATH:" =~ ":${HOME}/.scripts:" ]] || PATH="${HOME}/.scripts:$PATH"     # personal scripts
 export PATH LD_LIBRARY_PATH MANPATH INFOPATH
 
+## Conda
+CONDA_HOME=${HOME}/.conda
+# This is effectively `conda init`
+[[ -e "${CONDA_HOME}" ]] && . "${CONDA_HOME}/etc/profile.d/conda.sh"
+
 # Set up config home for macOS
 if [ "$(uname -s)" == "Darwin" ]; then
   export XDG_CONFIG_HOME=${HOME}/.config
