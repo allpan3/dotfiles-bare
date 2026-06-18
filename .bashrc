@@ -152,6 +152,19 @@ if [ -f "$HOME/.bashrc_local" ]; then
 fi
 
 ###############################
+# Prompt
+###############################
+# References: https://misc.flogisoft.com/bash/tip_colors_and_formatting
+#             https://tldp.org/HOWTO/Bash-Prompt-HOWTO/bash-prompt-escape-sequences.html
+if ! type -p starship &>/dev/null; then
+  # git status in prompt
+  test -e "${HOME}/.scripts/git-prompt.sh" && source "${HOME}/.scripts/git-prompt.sh"
+  export GIT_PS1_SHOWDIRTYSTATE="" # chipyard is slow with this
+  RESTORE='\[\e[0m\]'
+  export PS1="\[\e[0;44;30m\][\w]${RESTORE}\[\e[33m\]\$(__git_ps1 \"[\[\e[03m\]%s\[\e[23m\]]\")${RESTORE}\[\e[1;38;5;4m\] ⨕ ${RESTORE}"
+fi
+
+###############################
 # Executable Setup
 ###############################
 
