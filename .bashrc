@@ -260,7 +260,7 @@ alias md='mkdir -p'
 alias rd='rmdir'
 
 if type rg &>/dev/null; then
-  alias rg='rg --smart-case --hidden --follow -z'
+  alias rg="rg --smart-case --hidden -g '!.git/' --follow -z"
 fi
 
 if command -v nvim &>/dev/null; then
