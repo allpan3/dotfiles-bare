@@ -6,6 +6,7 @@
 ########## Alias ##########
 alias typora="open -a typora"
 alias dsclean='find . -type f -name .DS_Store -delete'
+alias lv='NVIM_APPNAME="nvim-lazyvim" nvim'
 
 ########## Completion ##########
 # ble.sh ships its own completion scripts, no need to load again
