@@ -1,32 +1,11 @@
 ### Local bashrc file containing system-specific settings
 
-########## Prompt ##########
-# References: https://misc.flogisoft.com/bash/tip_colors_and_formatting
-#             https://tldp.org/HOWTO/Bash-Prompt-HOWTO/bash-prompt-escape-sequences.html
-if ! type -p starship &>/dev/null; then
-  # git status in prompt
-  test -e "${HOME}/.scripts/git-prompt.sh" && source "${HOME}/.scripts/git-prompt.sh"
-  export GIT_PS1_SHOWDIRTYSTATE=1
-  RESTORE='\[\e[0m\]'
-  export PS1="\[\e[00;42;30m\][\w]${RESTORE}\[\e[33m\]\$(__git_ps1 \"[\[\e[03m\]%s\[\e[23m\]]\")${RESTORE} ⨕ "
-fi
-
 ########## Variables ##########
 # macOS automatically adds all paths in /etc/paths.d
 
 ########## Alias ##########
 alias typora="open -a typora"
 alias dsclean='find . -type f -name .DS_Store -delete'
-
-########## Environment ##########
-## Conda
-# The base env bin is added to PATH and will always be implicitly activated
-# To activate/deactivate other environment, run the following commands
-# Activate environment:   conda activate <env>
-# Deactivate environment: cond deactivate
-CONDA_HOME=${HOME}/.conda
-# This is effectively `conda init`
-[[ -e "${CONDA_HOME}" ]] && . "${CONDA_HOME}/etc/profile.d/conda.sh"
 
 ########## Completion ##########
 # ble.sh ships its own completion scripts, no need to load again
