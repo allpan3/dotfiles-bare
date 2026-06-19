@@ -1,27 +1,13 @@
 ### Local bashrc file containing system-specific settings
 
-## Prompt
-if ! type -p starship &>/dev/null; then
-  # git status in prompt
-  test -e "${HOME}/.scripts/git-prompt.sh" && source "${HOME}/.scripts/git-prompt.sh"
-  export GIT_PS1_SHOWDIRTYSTATE="" # chipyard is slow with this
-  RESTORE='\[\e[0m\]'
-  export PS1="\[\e[0;44;30m\][\w]${RESTORE}\[\e[33m\]\$(__git_ps1 \"[\[\e[03m\]%s\[\e[23m\]]\")${RESTORE}\[\e[1;38;5;4m\] ⨕ ${RESTORE}"
-fi
-
 ## Environment
 ## Conda
 # The base env bin is added to PATH and will always be implicitly activated
 # To activate/deactivate other environment, run the following commands
 # Activate environment:   conda activate <env>
 # Deactivate environment: cond deactivate
-CONDA_HOME=${HOME}/.conda
-# This is effectively `conda init`
-[[ -e "${CONDA_HOME}" ]] && . "${CONDA_HOME}/etc/profile.d/conda.sh"
 [[ ":$PATH:" =~ ":${CONDA_HOME}/bin:" ]] || PATH="${CONDA_HOME}/bin:$PATH"
 [[ ":$MANPATH:" =~ ":${CONDA_HOME}/share/man:" ]] || MANPATH=":${CONDA_HOME}/share/man${MANPATH:+${MANPATH}}"
-## Coursier
-[[ ":$PATH:" =~ ":${HOME}/.local/share/coursier/bin:" ]] || PATH="${HOME}/.local/share/coursier/bin:$PATH"
 
 export INFOPATH="${CONDA_HOME}/share/info"
 export PATH MANPATH
@@ -67,7 +53,6 @@ if [[ -z "$DISPLAY" ]]; then
     export DISPLAY=:1
 fi
 
-alias m="mflowgen"
 alias mnew="mflowgen run --design"
 alias meco1="mflowgen run --graph-kwargs {\"'eco':'self'\"} --design"
 alias meco2="mflowgen run --graph-kwargs {\"'eco':'parent'\"} --design"
